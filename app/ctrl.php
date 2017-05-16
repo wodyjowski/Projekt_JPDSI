@@ -1,12 +1,15 @@
 <?php
-require_once dirname (__FILE__).'/../init.php';
+require_once dirname(__FILE__) . '/../init.php';
 
 switch ($action) {
-	default : // 'personList'
+    default : // 'home'
+        include_once getConf()->root_path . '/app/home/HomeCtrl.class.php';
+        $ctrl = new HomeCtrl();
+        $ctrl->process();
+        break;
 
-	break;
-	case '' :
-	    //TODO
-	break;
+    case '' :
+        //TODO
+        break;
 }
 ?>
