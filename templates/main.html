@@ -1,15 +1,75 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
-
+<!DOCTYPE html>
 <head>
-	<meta charset="utf-8"/>
-	<title>Projekt_JPDSI</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description" content="Projekt zaliczeniowy JPDSI">
+    <meta name="author" content="Michał Kisiel">
+    <link rel="icon" href="{$conf->app_url}/css/favicon-16x16.png">
+    <title>Projekt_JPDSI</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom style -->
+    <link href="{$conf->app_url}/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-{block name=content} {/block}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{$conf->action_root}home">Projekt_JPDSI</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-form navbar-right">
+                <button class="btn btn-danger">Zarejestruj się</button>
+                <button class="btn btn-primary">Zaloguj się</button>
+            </div>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
 
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Forum</h1>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <!-- POSTS -->
+    {block name=content} {/block}
+
+
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2017 Michał Kisiel</p>
+    </footer>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
 
