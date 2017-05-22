@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2017-05-22 23:24:33
+<?php /* Smarty version 3.1.27, created on 2017-05-21 21:38:30
          compiled from "C:\xampp\htdocs\Projekt_JPDSI\app\home\Home.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:417959235711a4fcf3_05317942%%*/
+/*%%SmartyHeaderCode:161835921ecb6d0db48_94687034%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,23 +9,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c9d3ca35eeb181fd6e49a56fafddd0ee959c2f8d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Projekt_JPDSI\\app\\home\\Home.html',
-      1 => 1495487761,
+      1 => 1495391131,
       2 => 'file',
     ),
     '0ec36aa128b2b57f2582113b88167535e2b9e320' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Projekt_JPDSI\\templates\\main.html',
-      1 => 1495487418,
+      1 => 1495395507,
       2 => 'file',
     ),
-    '640289d7162c91addb5efb73e6e55a7e2f69ec4b' => 
+    'baeaa3fafc3b2e6c680f3fa56f351e509f054dd0' => 
     array (
-      0 => '640289d7162c91addb5efb73e6e55a7e2f69ec4b',
+      0 => 'baeaa3fafc3b2e6c680f3fa56f351e509f054dd0',
       1 => 0,
       2 => 'string',
     ),
   ),
-  'nocache_hash' => '417959235711a4fcf3_05317942',
+  'nocache_hash' => '161835921ecb6d0db48_94687034',
   'variables' => 
   array (
     'conf' => 0,
@@ -34,13 +34,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_59235711ae1b61_67107339',
+  'unifunc' => 'content_5921ecb6d85933_88057590',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_59235711ae1b61_67107339')) {
-function content_59235711ae1b61_67107339 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5921ecb6d85933_88057590')) {
+function content_5921ecb6d85933_88057590 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '417959235711a4fcf3_05317942';
+$_smarty_tpl->properties['nocache_hash'] = '161835921ecb6d0db48_94687034';
 ?>
 <!DOCTYPE html>
 <head>
@@ -78,29 +78,29 @@ $_smarty_tpl->properties['nocache_hash'] = '417959235711a4fcf3_05317942';
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+            <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 home">Projekt_JPDSI</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <?php if (isset($_smarty_tpl->tpl_vars['user']->value)) {?>
-            <div class="navbar-form navbar-right">
-                <a href="" class="btn btn-primary"> Witaj <?php echo $_smarty_tpl->tpl_vars['user']->value;?>
-</a>
-                <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-logoutAction" class="btn btn-danger">Wyloguj</a>
-            </div>
-            <?php } else { ?>
-            <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+                <?php if (!isset($_smarty_tpl->tpl_vars['user']->value) || !$_smarty_tpl->tpl_vars['user']->value->areValues()) {?>
+                <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 loginAction" method="post" class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" placeholder="Login" class="form-control" name="login">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Hasło" class="form-control" name="pass">
-                </div>
-                <button type="submit" class="btn btn-success">Zaloguj</button>
-            </form>
-            <?php }?>
+                    <div class="form-group">
+                        <input type="text" placeholder="Login" class="form-control" name="login">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Hasło" class="form-control" name="pass">
+                    </div>
+                    <button type="submit" class="btn btn-success">Zaloguj</button>
+                </form>
+                <?php } else { ?>
+            <div class="navbar-form navbar-right">
+                <a href="" class="btn btn-primary">  Witaj <?php echo $_smarty_tpl->tpl_vars['user']->value->login;?>
+.</a>
+                <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+logout" class="btn btn-danger">Wyloguj</a>
+            </div>
+                <?php }?>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
@@ -109,12 +109,8 @@ loginAction" method="post" class="navbar-form navbar-right">
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <?php if (isset($_smarty_tpl->tpl_vars['mainTitle']->value)) {?>
         <h1><?php echo $_smarty_tpl->tpl_vars['mainTitle']->value;?>
 </h1>
-        <?php } else { ?>
-        <h1>default</h1>
-        <?php }?>
     </div>
 </div>
 
@@ -123,42 +119,8 @@ loginAction" method="post" class="navbar-form navbar-right">
 
     <!-- POSTS -->
     <?php
-$_smarty_tpl->properties['nocache_hash'] = '417959235711a4fcf3_05317942';
+$_smarty_tpl->properties['nocache_hash'] = '161835921ecb6d0db48_94687034';
 ?>
-
-
-<?php if (isset($_smarty_tpl->tpl_vars['user']->value)) {?>
-<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-createPost" method="post" class="">
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <input type="text" placeholder="Tytuł" class="form-control" name="title">
-        </div>
-        <div class="panel-body">
-            <div class="form-group ">
-                <textarea type="textarea" placeholder="Treść" class="form-control" name="content"></textarea>
-            </div>
-
-            <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Opublikuj</button>
-            </div>
-
-        </div>
-    </div>
-
-</form>
-    <?php } else { ?>
-    <div class="row">
-        <div class="alert alert-warning">
-            <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-login" class="alert-link">Zaloguj się</a> lub <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-register" class="alert-link">Zarejestruj</a> aby dodawać posty.
-        </div>
-    </div>
-
-
-<?php }?>
 
 
 <?php
@@ -168,15 +130,11 @@ settype($_from, 'array');
 }
 $_smarty_tpl->tpl_vars['p'] = new Smarty_Variable;
 $_smarty_tpl->tpl_vars['p']->_loop = false;
-$_smarty_tpl->tpl_vars['__foreach_p'] = new Smarty_Variable(array('index' => -1));
 foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
 $_smarty_tpl->tpl_vars['p']->_loop = true;
-$_smarty_tpl->tpl_vars['__foreach_p']->value['index']++;
 $foreach_p_Sav = $_smarty_tpl->tpl_vars['p'];
 ?>
-<?php if ((isset($_smarty_tpl->tpl_vars['__foreach_p']->value['index']) ? $_smarty_tpl->tpl_vars['__foreach_p']->value['index'] : null)%2 == 0) {?>
 <div class="row">
-    <?php }?>
     <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -190,9 +148,7 @@ $foreach_p_Sav = $_smarty_tpl->tpl_vars['p'];
             </div>
         </div>
     </div>
-    <?php if ((isset($_smarty_tpl->tpl_vars['__foreach_p']->value['index']) ? $_smarty_tpl->tpl_vars['__foreach_p']->value['index'] : null)%2 == 1) {?>
 </div>
-<?php }?>
 <?php
 $_smarty_tpl->tpl_vars['p'] = $foreach_p_Sav;
 }
@@ -201,14 +157,15 @@ $_smarty_tpl->tpl_vars['p'] = $foreach_p_Sav;
 
 
 
-</div> <!-- /container -->
-<div class="container">
 
     <hr>
+
     <footer>
         <p>&copy; 2017 Michał Kisiel</p>
     </footer>
-</div>
+</div> <!-- /container -->
+
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -216,9 +173,7 @@ $_smarty_tpl->tpl_vars['p'] = $foreach_p_Sav;
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"><?php echo '</script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"><?php echo '</script'; ?>
 >
 </body>
 

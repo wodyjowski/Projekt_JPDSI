@@ -2,8 +2,41 @@
 
 {block name=content}
 
-{foreach $posts as $p}
+{if isset($user)}
+<form action="{$conf->action_url}createPost" method="post" class="">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <input type="text" placeholder="Tytuł" class="form-control" name="title">
+        </div>
+        <div class="panel-body">
+            <div class="form-group ">
+                <textarea type="textarea" placeholder="Treść" class="form-control" name="content"></textarea>
+            </div>
+
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Opublikuj</button>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+    {else}
+    <div class="row">
+        <div class="alert alert-warning">
+            <a href="{$conf->action_url}login" class="alert-link">Zaloguj się</a> lub <a href="{$conf->action_url}register" class="alert-link">Zarejestruj</a> aby dodawać posty.
+        </div>
+    </div>
+
+
+{/if}
+
+
+{foreach $posts as $p name=p}
+{if $smarty.foreach.p.index % 2 == 0}
 <div class="row">
+    {/if}
     <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -15,7 +48,9 @@
             </div>
         </div>
     </div>
+    {if $smarty.foreach.p.index % 2 == 1}
 </div>
+{/if}
 {/foreach}
 
 {/block}

@@ -1,37 +1,42 @@
 <?php
-require_once dirname(__FILE__).'/Config.class.php';
+//initialize the framework:
+// - load config, messages - prepare functions returning this global objects
+// - prepare functions loading smarty and database on demand (only once)
+// - load core functions and validators
+// - load user roles from session and load $action from request
+
+require_once dirname(__FILE__) . '/core/Config.class.php';
 $conf = new Config();
 require_once dirname(__FILE__).'/config.php'; //set configuration
 
 function getConf(){ global $conf; return $conf; }
 
 //Load Messages class and create object
-require_once getConf()->root_path.'/lib/Messages.class.php';
+require_once dirname(__FILE__) . '/core/Messages.class.php';
 $msgs = new Messages();
 
 function getMessages(){	global $msgs; return $msgs; }
 
-//Prepare for Smarty, create once - only when needed
-$smarty = null;	
+$smarty = null;	//Prepare for Smarty, create once - only when needed
 function getSmarty(){
 	global $smarty;
 	if (!isset($smarty)){ //Create smarty and assign configuration and messages
-		include_once getConf()->root_path.'/lib/smarty/Smarty.class.php';
-		$smarty = new Smarty();	
+		require_once dirname(__FILE__) . '/lib/smarty/Smarty.class.php';
+		$smarty = new Smarty();
+		$user = getUser();
+		$smarty->assign('user',getUser()["username"]);
 		$smarty->assign('conf',getConf());
 		$smarty->assign('msgs',getMessages());
 	}
 	return $smarty;
 }
 
-//Prepare for Database, load Medoo library and create connection once - only when needed
-$db = null;
+$db = null; //Prepare for Database, load Medoo library and create connection once - only when needed
 function getDB(){
 	global $conf,$db;
 	if (!isset($db)){
-		include_once $conf->root_path.'/lib/medoo/medoo.php';
-
-		$db = new medoo([
+		require_once dirname(__FILE__) . '/lib/medoo/medoo.php';
+		$db = new Medoo([
 			'database_type' => &$conf->db_type,
 			'server' => &$conf->db_server,
 			'database_name' => &$conf->db_name,
@@ -46,8 +51,8 @@ function getDB(){
 	return $db;
 }
 
-//Load helper functions
-require_once getConf()->root_path.'/lib/helper_functions.php';
-//Get action to perform from request
-$action = getFromRequest(getConf()->action_param);
-?>
+require_once dirname(__FILE__) . '/core/core_functions.php'; //load core functions
+require_once dirname(__FILE__) . '/core/validators.php'; //load validators
+session_start(); //start or continue session
+$conf->roles = null != getFromSession('_roles') ? unserialize(getFromSession('_roles')) : array(); //load roles
+$action = getFromRequest(getConf()->action_param); //get action to perform from request

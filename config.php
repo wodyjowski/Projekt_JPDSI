@@ -1,10 +1,11 @@
 <?php
+$conf->debug = true; // set true during development and use in your code (for instance check if true to send additional message)
 // ---- Main webapp configuration
-$conf->server_name = 'localhost:80'; // server address and port
-$conf->protocol = 'http';              // http or https
-$conf->app_root = '/Projekt_JPDSI';        // project folder - relative to server apps folder
-$conf->action_param = 'action';        // action parameter name
-$conf->action_script = '/app/ctrl.php'; // localisation of main action script
+$conf->server_name = 'localhost'; // server address and port
+$conf->protocol = 'http';         // http or https
+$conf->app_root = '/Projekt_JPDSI';   // project folder - relative to server apps folder
+$conf->action_param = 'a';        // action parameter name
+$conf->action_script = '/ctrl.php'; // main action script with location
 
 // ---- Helpful values generated automatically
 $conf->root_path = dirname(__FILE__);
@@ -25,4 +26,3 @@ $conf->db_charset = 'utf8';
 $conf->db_port = '3306';
 //$conf->db_prefix = '';
 $conf->db_option = [ PDO::ATTR_CASE => PDO::CASE_NATURAL ];
-?>

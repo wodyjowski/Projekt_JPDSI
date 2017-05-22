@@ -1,0 +1,25 @@
+{extends file=$conf->root_path|cat:"/templates/main.html"}
+
+{block name=content}
+<form action="{$conf->action_root}login" method="post" class="">
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="form-group ">
+				<label for="id_login">Login:</label>
+				<input id="id_login" type="text" class="form-control" name="login" value="{$form->login}">
+			</div>
+			<div class="form-group ">
+				<label for="id_pass">Email:</label>
+				<input id="id_pass" type="text" class="form-control" name="pass">
+			</div>
+			<div class="offset-sm-2 col-sm-10">
+				<button type="submit" class="btn btn-success">Zaloguj</button>
+			</div>
+		</div>
+
+	</div>
+
+
+</form>
+{/block}

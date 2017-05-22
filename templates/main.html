@@ -32,13 +32,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{$conf->action_root}home">Projekt_JPDSI</a>
+            <a class="navbar-brand" href="{$conf->action_url}home">Projekt_JPDSI</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            {if isset($user)}
             <div class="navbar-form navbar-right">
-                <button class="btn btn-danger">Zarejestruj się</button>
-                <button class="btn btn-primary">Zaloguj się</button>
+                <a href="" class="btn btn-primary"> Witaj {$user}</a>
+                <a href="{$conf->action_url}logoutAction" class="btn btn-danger">Wyloguj</a>
             </div>
+            {else}
+            <form action="{$conf->action_url}loginAction" method="post" class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="Login" class="form-control" name="login">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Hasło" class="form-control" name="pass">
+                </div>
+                <button type="submit" class="btn btn-success">Zaloguj</button>
+            </form>
+            {/if}
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
@@ -47,7 +59,11 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Forum</h1>
+        {if isset($mainTitle)}
+        <h1>{$mainTitle}</h1>
+        {else}
+        <h1>default</h1>
+        {/if}
     </div>
 </div>
 
@@ -58,20 +74,21 @@
     {block name=content} {/block}
 
 
+</div> <!-- /container -->
+<div class="container">
 
     <hr>
-
     <footer>
         <p>&copy; 2017 Michał Kisiel</p>
     </footer>
-</div> <!-- /container -->
-
-
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
