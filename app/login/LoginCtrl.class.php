@@ -32,15 +32,13 @@ class LoginCtrl
         if (getMessages()->isError()) return false;
 
 
-
-
         try {
             $this->result = getDB()->select("user", [
                 "userID",
                 "username",
                 "password"
             ], [
-                    "username" => $this->form->login,
+                "username" => $this->form->login,
 
             ]);
         } catch (Exception $e) {
@@ -48,10 +46,9 @@ class LoginCtrl
         }
 
 
-        if(password_verify($this->form->pass,$this->result[0]["password"])){
-            setUser($this->result[0]["username"],$this->result[0]["userID"]);
-        }
-        else{
+        if ($this->result != null && password_verify($this->form->pass, $this->result[0]["password"])) {
+            setUser($this->result[0]["username"], $this->result[0]["userID"]);
+        } else {
             getMessages()->addMessage(new Message('Niepoprawny login lub hasło', Message::ERROR));
         }
 

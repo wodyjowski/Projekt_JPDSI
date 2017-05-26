@@ -4,11 +4,6 @@ class RegisterCtrl
 {
 
 
-
-
-
-
-
     public function doRegister()
     {
         $username = getFromRequest('username',true,'Błędne wywołanie systemu');
@@ -20,13 +15,28 @@ class RegisterCtrl
             getMessages()->addMessage(new Message('Nie podano loginu', Message::ERROR));
         }
         if (empty($email)) {
-            getMessages()->addMessage(new Message('Nie podano hasła', Message::ERROR));
+            getMessages()->addMessage(new Message('Nie podano adresu email', Message::ERROR));
         }
         if (empty($password)) {
-            getMessages()->addMessage(new Message('Nie podano loginu', Message::ERROR));
+            getMessages()->addMessage(new Message('Nie podano hasła', Message::ERROR));
         }
         if (empty($passwordCheck)) {
-            getMessages()->addMessage(new Message('Nie podano hasła', Message::ERROR));
+            getMessages()->addMessage(new Message('Nie podano ponownie hasła', Message::ERROR));
+        }
+
+
+
+
+        if (!preg_match("/^[\w]{5,}$/D",$username)) {
+            getMessages()->addMessage(new Message('Niepoprawny login', Message::ERROR));
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            getMessages()->addMessage(new Message('Niepoprawny email', Message::ERROR));
+        }
+
+        if ($password!=$passwordCheck) {
+            getMessages()->addMessage(new Message('Podane hasła nie są takie same', Message::ERROR));
         }
 
 

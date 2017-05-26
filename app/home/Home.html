@@ -40,10 +40,10 @@
     <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">{$p["title"]}</h3>
+                <h3 class="panel-title">{$p["title"]|escape}</h3>
             </div>
             <div class="panel-body">
-                <p>{$p["content"]}</p>
+                <p>{$p["content"]|escape}</p>
                 <button class="btn btn-primary">Więcej...</button>
             </div>
         </div>
@@ -52,5 +52,6 @@
 </div>
 {/if}
 {/foreach}
+
 
 {/block}

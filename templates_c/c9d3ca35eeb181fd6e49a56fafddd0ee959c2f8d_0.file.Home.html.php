@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2017-05-22 23:24:33
+<?php /* Smarty version 3.1.27, created on 2017-05-26 20:34:46
          compiled from "C:\xampp\htdocs\Projekt_JPDSI\app\home\Home.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:417959235711a4fcf3_05317942%%*/
+/*%%SmartyHeaderCode:2307359287546be7141_93734093%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,38 +9,40 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c9d3ca35eeb181fd6e49a56fafddd0ee959c2f8d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Projekt_JPDSI\\app\\home\\Home.html',
-      1 => 1495487761,
+      1 => 1495741124,
       2 => 'file',
     ),
     '0ec36aa128b2b57f2582113b88167535e2b9e320' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Projekt_JPDSI\\templates\\main.html',
-      1 => 1495487418,
+      1 => 1495823637,
       2 => 'file',
     ),
-    '640289d7162c91addb5efb73e6e55a7e2f69ec4b' => 
+    '538fd47d0e6e5d4bc1043f2e1b762a4fd0f78463' => 
     array (
-      0 => '640289d7162c91addb5efb73e6e55a7e2f69ec4b',
+      0 => '538fd47d0e6e5d4bc1043f2e1b762a4fd0f78463',
       1 => 0,
       2 => 'string',
     ),
   ),
-  'nocache_hash' => '417959235711a4fcf3_05317942',
+  'nocache_hash' => '2307359287546be7141_93734093',
   'variables' => 
   array (
     'conf' => 0,
     'user' => 0,
     'mainTitle' => 0,
+    'msgs' => 0,
+    'msg' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_59235711ae1b61_67107339',
+  'unifunc' => 'content_59287546d561c6_01524425',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_59235711ae1b61_67107339')) {
-function content_59235711ae1b61_67107339 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_59287546d561c6_01524425')) {
+function content_59287546d561c6_01524425 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '417959235711a4fcf3_05317942';
+$_smarty_tpl->properties['nocache_hash'] = '2307359287546be7141_93734093';
 ?>
 <!DOCTYPE html>
 <head>
@@ -119,11 +121,39 @@ loginAction" method="post" class="navbar-form navbar-right">
 </div>
 
 
+
+<div class="container">
+<?php
+$_from = $_smarty_tpl->tpl_vars['msgs']->value->getMessages();
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['msg'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['msg']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
+$_smarty_tpl->tpl_vars['msg']->_loop = true;
+$foreach_msg_Sav = $_smarty_tpl->tpl_vars['msg'];
+?>
+
+<div class="row">
+        <div class="alert alert-danger">
+                <p><?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+</p>
+    </div>
+</div>
+<?php
+$_smarty_tpl->tpl_vars['msg'] = $foreach_msg_Sav;
+}
+?>
+</div>
+
+
+
 <div class="container">
 
-    <!-- POSTS -->
+    <!-- CONTENT -->
     <?php
-$_smarty_tpl->properties['nocache_hash'] = '417959235711a4fcf3_05317942';
+$_smarty_tpl->properties['nocache_hash'] = '2307359287546be7141_93734093';
 ?>
 
 
@@ -180,11 +210,11 @@ $foreach_p_Sav = $_smarty_tpl->tpl_vars['p'];
     <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $_smarty_tpl->tpl_vars['p']->value["title"];?>
+                <h3 class="panel-title"><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['p']->value["title"], ENT_QUOTES, 'UTF-8', true);?>
 </h3>
             </div>
             <div class="panel-body">
-                <p><?php echo $_smarty_tpl->tpl_vars['p']->value["content"];?>
+                <p><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['p']->value["content"], ENT_QUOTES, 'UTF-8', true);?>
 </p>
                 <button class="btn btn-primary">Więcej...</button>
             </div>
@@ -197,6 +227,7 @@ $foreach_p_Sav = $_smarty_tpl->tpl_vars['p'];
 $_smarty_tpl->tpl_vars['p'] = $foreach_p_Sav;
 }
 ?>
+
 
 
 

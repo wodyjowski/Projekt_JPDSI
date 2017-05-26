@@ -61,7 +61,6 @@ class HomeCtrl
     public
     function generateView()
     {
-
         getSmarty()->assign("posts", $this->posts);
         getSmarty()->assign('mainTitle', "Forum");
         getSmarty()->display(getConf()->root_path . '/app/home/Home.html');

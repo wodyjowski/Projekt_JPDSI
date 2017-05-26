@@ -1,7 +1,7 @@
 {extends file=$conf->root_path|cat:"/templates/main.html"}
 
 {block name=content}
-<form action="{$conf->action_root}login" method="post" class="">
+<form action="{$conf->action_url}loginAction" method="post" class="">
 
 	<div class="panel panel-default">
 		<div class="panel-body">
@@ -10,7 +10,7 @@
 				<input id="id_login" type="text" class="form-control" name="login" value="{$form->login}">
 			</div>
 			<div class="form-group ">
-				<label for="id_pass">Email:</label>
+				<label for="id_pass">Hasło:</label>
 				<input id="id_pass" type="text" class="form-control" name="pass">
 			</div>
 			<div class="offset-sm-2 col-sm-10">

@@ -68,9 +68,23 @@
 </div>
 
 
+
+<div class="container">
+{foreach $msgs->getMessages() as $msg}
+
+<div class="row">
+        <div class="alert alert-danger">
+                <p>{$msg->text}</p>
+    </div>
+</div>
+{/foreach}
+</div>
+
+
+
 <div class="container">
 
-    <!-- POSTS -->
+    <!-- CONTENT -->
     {block name=content} {/block}
 
 
