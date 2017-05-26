@@ -1,0 +1,3 @@
+<h1>PHP forum</h1>
+
+Just simple forum...
