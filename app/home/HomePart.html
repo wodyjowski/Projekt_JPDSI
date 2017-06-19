@@ -1,0 +1,36 @@
+<div id="postList">
+
+{foreach $posts as $p name=p}
+
+<div class="col-md-12 custom">
+    <div class="panel panel-default panel-post masthead">
+        <div class="panel-heading ">
+            <div class="dropdown pull-right">
+                <a class="btn btn-nice btn-xs dropdown-toggle" type="button" id="dropdownMenu1"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {$p["username"]|escape}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Profil użytkownika</a></li>
+                    {if $p["username"] == $user}
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Edytuj post</a></li>
+                    <li><a href="#">Usuń post</a></li>
+                    </form>
+                    {/if}
+                </ul>
+            </div>
+            {$p["title"]|escape}
+        </div>
+        <div class="panel-body">
+            <p>{$p["content"]|escape:'javascrpit'}</p>
+            <a href="#" class="btn btn-nice btn-sm pull-right"
+               onclick="postID('{$conf->action_url}commentView',{$p[" postID"]})">Komentarze</a>
+        </div>
+    </div>
+</div>
+
+{/foreach}
+
+</div>

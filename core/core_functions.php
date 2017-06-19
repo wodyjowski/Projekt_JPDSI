@@ -115,14 +115,16 @@ function getUser(){
     if (isset($_SESSION["username"])){
         $user["userID"] = $_SESSION ["userID"];
         $user["username"] = $_SESSION ["username"];
+        $user["img"] = $_SESSION ["img"];
         return $user;
     }
 }
 
-function setUser($username = "unknown", $userID){
+function setUser($username = "unknown", $userID, $userImg){
     if(isset($userID)) {
-        $_SESSION["userID"] = $userID;
         $_SESSION["username"] = $username;
+        $_SESSION["userID"] = $userID;
+        $_SESSION["img"] = $userImg;
     }
 }
 

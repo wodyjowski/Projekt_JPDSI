@@ -14,6 +14,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{$conf->app_url}/css/simditor.css" />
 
     <!-- Custom style -->
     <link href="{$conf->app_url}/css/style.css" rel="stylesheet">
@@ -36,24 +38,28 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             {if isset($user)}
+
             <div class="navbar-form navbar-right">
-                <a href="" class="btn btn-primary"> Witaj {$user}</a>
+                <a href="{$conf->action_url}showProfile" class="btn btn-primary ">
+                    <img  class="profilePicSmall" src="{$conf->app_url}/data/{$user["img"]}">
+                   {$user["username"]} <span class="badge"></span></a>
                 <a href="{$conf->action_url}logoutAction" class="btn btn-danger">Wyloguj</a>
             </div>
             {else}
             <form action="{$conf->action_url}loginAction" method="post" class="navbar-form navbar-right">
                 <div class="form-group">
-                    <input type="text" placeholder="Login" class="form-control" name="login">
+                    <input type="text" placeholder="Login" class="form-control" name="login" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <input type="password" placeholder="Hasło" class="form-control" name="pass">
                 </div>
-                <button type="submit" class="btn btn-success">Zaloguj</button>
+                <button type="submit" class="btn btn-login">Zaloguj</button>
             </form>
             {/if}
-        </div><!--/.navbar-collapse -->
+        </div>
     </div>
 </nav>
+
 
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -68,18 +74,22 @@
 </div>
 
 
+<!-- ALERTS -->
 
 <div class="container">
-{foreach $msgs->getMessages() as $msg}
+    {foreach $msgs->getMessages() as $msg}
 
-<div class="row">
+
+    <div class="row">
         <div class="alert alert-danger">
-                <p>{$msg->text}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>{$msg->text}</p>
+        </div>
     </div>
+    {/foreach}
 </div>
-{/foreach}
-</div>
-
 
 
 <div class="container">
@@ -96,13 +106,20 @@
         <p>&copy; 2017 Michał Kisiel</p>
     </footer>
 </div>
-<!-- Bootstrap core JavaScript
-================================================== -->
+
+
+<!-- ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Include Editor style. -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+{block name=script} {/block}
+
+
 </body>
 
 </html>

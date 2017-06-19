@@ -1,11 +1,163 @@
-.post {
-  background: #9ca2ff;
+.v-center {
+    display: flex;
+    align-items: center;
 }
+
+.profilePic{
+    height: 100px;
+    width: 100px;
+    display: inline-block
+}
+
+.profilePicSmall{
+    height: 20px;
+    width: 20px;
+    display: inline-block
+}
+
+img {
+    max-width:100% !important;
+    height:auto !important;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+.custom{
+    margin-bottom:10px;
+}
+
+
+.panel-post > .panel-heading {
+
+    color: #fafafa;
+    background-color: #5D7794;
+    border-color: #fafafb;
+}
+
+.panel-post > .panel-body {
+
+    background-color: #fafafb;
+    border-color: #fafafb;
+    overflow: hidden;
+}
+
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
+    word-wrap: break-word;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
 
+/*----------------------------------------------------------- BUTTON NICE */
+
+.btn-nice {
+    color: #FFFFFF;
+    background-color: #40556B;
+    border-color: #59626B;
+}
+
+.btn-nice:hover,
+.btn-nice:focus,
+.btn-nice:active,
+.btn-nice.active,
+.open .dropdown-toggle.btn-nice {
+    color: #FFFFFF;
+    background-color: #374758;
+    border-color: #59626B;
+}
+
+.btn-nice:active,
+.btn-nice.active,
+.open .dropdown-toggle.btn-nice {
+    background-image: none;
+}
+
+.btn-nice.disabled,
+.btn-nice[disabled],
+fieldset[disabled] .btn-nice,
+.btn-nice.disabled:hover,
+.btn-nice[disabled]:hover,
+fieldset[disabled] .btn-nice:hover,
+.btn-nice.disabled:focus,
+.btn-nice[disabled]:focus,
+fieldset[disabled] .btn-nice:focus,
+.btn-nice.disabled:active,
+.btn-nice[disabled]:active,
+fieldset[disabled] .btn-nice:active,
+.btn-nice.disabled.active,
+.btn-nice[disabled].active,
+fieldset[disabled] .btn-nice.active {
+    background-color: #40556B;
+    border-color: #59626B;
+}
+
+.btn-nice .badge {
+    color: #40556B;
+    background-color: #FFFFFF;
+}
+
+
+/*----------------------------------------------------------- BUTTON LOGIN */
+
+.btn-login {
+    color: #FFFFFF;
+    background-color: #399439;
+    border-color: #4C964C;
+}
+
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+    color: #FFFFFF;
+    background-color: #4CA64C;
+    border-color: #4C964C;
+}
+
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+    background-image: none;
+}
+
+.btn-login.disabled,
+.btn-login[disabled],
+fieldset[disabled] .btn-login,
+.btn-login.disabled:hover,
+.btn-login[disabled]:hover,
+fieldset[disabled] .btn-login:hover,
+.btn-login.disabled:focus,
+.btn-login[disabled]:focus,
+fieldset[disabled] .btn-login:focus,
+.btn-login.disabled:active,
+.btn-login[disabled]:active,
+fieldset[disabled] .btn-login:active,
+.btn-login.disabled.active,
+.btn-login[disabled].active,
+fieldset[disabled] .btn-login.active {
+    background-color: #399439;
+    border-color: #4C964C;
+}
+
+.btn-login .badge {
+    color: #399439;
+    background-color: #FFFFFF;
+}

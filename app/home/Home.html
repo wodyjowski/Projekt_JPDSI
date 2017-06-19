@@ -3,19 +3,21 @@
 {block name=content}
 
 {if isset($user)}
-<form action="{$conf->action_url}createPost" method="post" class="">
+<form action="{$conf->action_url}createPost" method="post">
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <input type="text" placeholder="Tytuł" class="form-control" name="title">
+            <input type="text" placeholder="Tytuł" class="form-control" name="title" autocomplete="off" {literal} pattern="{1,40}" {/literal}  {if isset($form->title)}  value="{$form->title}" {/if} >
         </div>
         <div class="panel-body">
-            <div class="form-group ">
-                <textarea type="textarea" placeholder="Treść" class="form-control" name="content"></textarea>
+            <div class="form-group">
+                <div class="fr-view">
+                <textarea id="editor" type="textarea" placeholder="Treść" class="form-control" name="content" autocomplete="off" {literal} pattern="{1,}" {/literal}> {if isset($form->content)}  {$form->content} {/if}  </textarea>
+                </div>
             </div>
 
             <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Opublikuj</button>
+                <button type="submit" class="btn btn-login">Opublikuj</button>
             </div>
 
         </div>
@@ -32,26 +34,57 @@
 
 {/if}
 
+<div id="postList">
 
 {foreach $posts as $p name=p}
-{if $smarty.foreach.p.index % 2 == 0}
-<div class="row">
-    {/if}
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">{$p["title"]|escape}</h3>
+    <div class="col-md-12 custom">
+        <div class="panel panel-default panel-post masthead">
+            <div class="panel-heading ">
+
+                <div class="dropdown pull-right">
+                    <a class="btn btn-nice btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {$p["username"]|escape}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Profil użytkownika</a></li>
+                        {if $p["username"] == $user}
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Edytuj post</a></li>
+                        <li><a href="#">Usuń post</a></li>
+                        </form>
+                        {/if}
+                    </ul>
+                </div>
+                {$p["title"]}
             </div>
             <div class="panel-body">
-                <p>{$p["content"]|escape}</p>
-                <button class="btn btn-primary">Więcej...</button>
+                <p>{$p["content"]|escape:'javascrpit'}</p>
+                <a href="#" class="btn btn-nice btn-sm pull-right" onclick="postID('{$conf->action_url}commentView','{$p["postID"]}')">Komentarze</a>
             </div>
         </div>
     </div>
-    {if $smarty.foreach.p.index % 2 == 1}
-</div>
-{/if}
+
 {/foreach}
+</div>
 
+<div class="row text-center">
+<div id="loading"  hidden>  <button class="btn btn-default btn-lg"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> </div>
+</div>
 
+{/block}
+
+{block name=script}
+
+<script type="text/javascript" src="{$conf->app_url}/js/module.js"></script>
+<script type="text/javascript" src="{$conf->app_url}/js/hotkeys.js"></script>
+<script type="text/javascript" src="{$conf->app_url}/js/uploader.js"></script>
+<script type="text/javascript" src="{$conf->app_url}/js/simditor.js"></script>
+<script type="text/javascript" src="{$conf->app_url}/js/mobilecheck.js"></script>
+
+<script type="text/javascript" src="{$conf->app_url}/js/functions.js"></script>
+
+<script>
+    prepareView('{$conf->action_url}');
+</script>
 {/block}

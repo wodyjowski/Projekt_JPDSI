@@ -17,17 +17,24 @@ getConf()->login_action = 'loginShow'; // akcja przekierowania dla chronionej za
 
 switch ($action){
 	default : //'personList' akcja domyślna
-		control('/app/home/','HomeCtrl','process'); // publiczna
-    case 'login': //AJAX - wysłanie samej tabeli HTMLowej
+		control('/app/home/','HomeCtrl','showPosts'); // publiczna
+    case 'login':
         control('/app/login/','LoginCtrl','generateView'); // publiczna
-    case 'loginAction': //AJAX - wysłanie samej tabeli HTMLowej
+    case 'loginAction':
         control('/app/login/','LoginCtrl','doLogin'); // publiczna
-    case 'logoutAction': //AJAX - wysłanie samej tabeli HTMLowej
+    case 'logoutAction':
         control('/app/login/','LoginCtrl','doLogout'); // publiczna
-    case 'createPost': //AJAX - wysłanie samej tabeli HTMLowej
+    case 'createPost':
         control('/app/home/','HomeCtrl','createPost'); // publiczna
-    case 'register': //AJAX - wysłanie samej tabeli HTMLowej
+    case 'register':
         control('/app/register/','RegisterCtrl','generateView'); // publiczna
-    case 'registerAction': //AJAX - wysłanie samej tabeli HTMLowej
+    case 'registerAction':
         control('/app/register/','RegisterCtrl','doRegister'); // publiczna
+    case 'showProfile':
+        control('/app/profile/','ProfileCtrl','showProfile'); // publiczna
+    case 'editProfile':
+        control('/app/profile/','ProfileCtrl','editProfile'); // publiczna
+
+    case 'partView':
+        control('/app/home/','HomeCtrl','partView'); // AJAX
 }

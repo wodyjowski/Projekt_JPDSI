@@ -1,0 +1,41 @@
+{extends file=$conf->root_path|cat:"/templates/main.html"}
+
+{block name=content}
+
+{if false}
+<div class="row bottom-buffer">
+    <div class="text-center">
+        <img src="http://www.leagueoflegends.pl/forum/uploads/profile/photo-37276.jpg" class="img-thumbnail"
+             alt="Cinque Terre">
+    </div>
+</div>
+{/if}
+
+
+<div class="jumbotron">
+
+    <div class="container">
+
+    <div class="row center-block v-center">
+    <div class="col-xs-6 col-md-6 text-center">
+
+    <h1>{$userData["username"]}</h1>
+
+    </div>
+    <div class="col-xs-6 col-md-6 text-center">
+    <img class="img-thumbnail"  src="{$conf->app_url}/data/{$user["img"]}">
+    </div>
+    </div>
+
+    <ul class="list-group" style="margin-top: 2em">
+        <li class="list-group-item">Email: {$userData["email"]}</li>
+        <li class="list-group-item">Liczba postów: {$postCount} </li>
+    </ul>
+
+    <a href="{$conf->action_url}editProfile" class="btn btn-login pull-right">Edytuj profil</a>
+    </div>
+</div>
+
+
+
+{/block}

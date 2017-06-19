@@ -9,22 +9,24 @@
         <div class="panel-body">
             <div class="form-group ">
                 <label for="username">Nazwa użytkownika:</label>
-                    <input id="username" type="text" class="form-control" name="username">
+
+                <input value="{$form->username}" id="username" type="text" class="form-control" name="username" autocomplete="off" {literal}  pattern="[\w]{3,}" {/literal}  title="Nazwa powinna składać się z conajmniej 3 znaków. Dozwolone cyfry, litery oraz znak podkreślenia.">
+
             </div>
             <div class="form-group ">
                 <label for="email">Email:</label>
-                <input id="email" type="text" class="form-control" name="email">
+                <input value="{$form->email}" id="email" type="email" class="form-control" name="email" autocomplete="off">
             </div>
             <div class="form-group ">
                 <label for="password">Hasło:</label>
-                <input id="password" type="text" class="form-control" name="password">
+                <input id="password" type="password" class="form-control" name="password" autocomplete="off">
             </div>
             <div class="form-group ">
                 <label for="passwordCheck">Powtórz hasło:</label>
-                <input id="passwordCheck" type="text" class="form-control" name="passwordCheck">
+                <input id="passwordCheck" type="password" class="form-control" name="passwordCheck" autocomplete="off">
             </div>
             <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Zarejestruj</button>
+                <button type="submit" class="btn btn-login">Zarejestruj</button>
             </div>
         </div>
 

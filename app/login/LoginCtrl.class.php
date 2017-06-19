@@ -8,7 +8,6 @@ class LoginCtrl
 
     public function __construct()
     {
-        //stworzenie potrzebnych obiektów
         $this->form = new LoginForm();
     }
 
@@ -36,7 +35,8 @@ class LoginCtrl
             $this->result = getDB()->select("user", [
                 "userID",
                 "username",
-                "password"
+                "password",
+                "image"
             ], [
                 "username" => $this->form->login,
 
@@ -47,7 +47,10 @@ class LoginCtrl
 
 
         if ($this->result != null && password_verify($this->form->pass, $this->result[0]["password"])) {
-            setUser($this->result[0]["username"], $this->result[0]["userID"]);
+            if($this->result[0]["image"]== null){
+                $this->result[0]["image"]="default.png";
+            }
+            setUser($this->result[0]["username"], $this->result[0]["userID"], $this->result[0]["image"]);
         } else {
             getMessages()->addMessage(new Message('Niepoprawny login lub hasło', Message::ERROR));
         }
@@ -60,7 +63,7 @@ class LoginCtrl
     {
         if ($this->validate()) {
             //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
-            getMessages()->addMessage(new Message('Poprawnie zalogowano do systemu', Message::INFO));
+            //getMessages()->addMessage(new Message('Poprawnie zalogowano do systemu', Message::INFO));
             storeMessages();
             redirectTo("home");
         } else {
@@ -75,7 +78,7 @@ class LoginCtrl
         session_destroy();
         // 2. idź na stronę główną (z przekazaniem messages przez sesję)
         session_start(); //rozpocznij nową sesję w celu przekazania messages w sesji
-        getMessages()->addMessage(new Message('Poprawnie wylogowano z systemu', Message::INFO));
+       //getMessages()->addMessage(new Message('Poprawnie wylogowano z systemu', Message::INFO));
         storeMessages();
         deleteUser();
         redirectTo('personList');

@@ -24,7 +24,7 @@ function getSmarty(){
 		require_once dirname(__FILE__) . '/lib/smarty/Smarty.class.php';
 		$smarty = new Smarty();
 		$user = getUser();
-		$smarty->assign('user',getUser()["username"]);
+		$smarty->assign('user',getUser());
 		$smarty->assign('conf',getConf());
 		$smarty->assign('msgs',getMessages());
 	}
